@@ -1,28 +1,48 @@
 <template>
 <div>
   <v-tabs>
-    <v-tab>News</v-tab>
-    <v-tab>Forum</v-tab>
-    <v-tab>Noten</v-tab>
-    <v-tab>Stundenplan</v-tab>
-  </v-tabs>
-<v-container>
-<grade-list> 
+    <v-tab 
+      v-for ="i in 4"
+      :key = "i"
+      ripple>
+      {{ tabs[i-1] }}
+      </v-tab>
+      <v-tab-item
+      v-for ="i in 4"
+      :key= "i"
+      >
+      <v-container>
+      <Grade-list v-if="i-1==2"></grade-list>
+      </v-container>
 
-</grade-list>
-</v-container>
+      </v-tab-item>
+  </v-tabs>
+
 
 
 </div>
 </template>
 
 <script>
-import GradeList from "../components/GradeList.vue"
+import GradeList from "../components/GradeList.vue";
 export default {
   components:{
     GradeList
-  }
+  },
 
+
+data () {
+  return {
+    tabs: [
+      "News",
+      "Forum",
+      "Noten",
+      "Stundenplan",
+      
+    ]
+
+  }
+}
 }
 </script>
 
