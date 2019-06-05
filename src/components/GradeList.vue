@@ -6,10 +6,12 @@
     hide-actions
   >
     <template v-slot:items="props">
-      <td>{{ props.item.name }}</td>
-      <td class="text-xs-right">{{ props.item.note }}</td>
-      <td class="text-xs-right">{{ props.item.credits }}</td>
-      
+      <td v-if="props.item.name == 'Gesamt'"><strong>{{ props.item.name }}</strong></td>
+      <td v-else>{{ props.item.name }}</td>
+      <td v-if="props.item.note=='3.14'" class="text-xs-right"> <strong>{{ props.item.note }}</strong></td>
+      <td v-else class="text-xs-right"> {{ props.item.note }} </td>
+      <td v-if="props.item.credits=='30'" class="text-xs-right"><strong>{{ props.item.credits }}</strong></td>
+      <td v-else class="text-xs-right"> {{ props.item.credits }} </td>
     </template>
   </v-data-table>
 </template>
@@ -31,24 +33,34 @@
         ],
         exams: [
           {
-              name: "irgendwasS",
-              note: 3.3,
+              name: "Algorithmen und Programmierung 1",
+              note: "3.3",
               credits: 8
           },
           {
-              name: "AP2",
-              note: 4.0,
+              name: "Algorithmen und Programmierung 2",
+              note: "4.0",
               credits: 7
           },
           {
-              name: "MCI",
-              note: 1.0,
-              credits: 9001
+              name: "Mensch-Computer-Interaktion",
+              note: "1.0",
+              credits: 5
+          },
+          {
+            name: "Betriebswirtschaftslehre 2",
+            note: "3.7",
+            credits: 5
+          },
+          {
+            name: "Einführung in Betriebssysteme und Rechnerarchitektur",
+            note: "4.0",
+            credits: 5
           },
           {
               name: "Gesamt",
-              note: 2.76,
-              credits: 9016
+              note: "3.14",
+              credits: 30
           }
         ]
       }
