@@ -13,6 +13,12 @@
       >
       <v-container>
       <Grade-list v-if="i-1==2"></grade-list>
+      
+      <newscard v-if="i-1==0" v-bind:inhalt="'Veranstaltung am 24.12 fällt auf Grund von Weihnachten aus'"
+      v-bind:autor="'Professor X'"
+      v-bind:datum="'Gestern, 16:05'"
+      v-bind:modul="'Datenbanken I'"></newscard>
+    
       </v-container>
 
       </v-tab-item>
@@ -25,9 +31,11 @@
 
 <script>
 import GradeList from "../components/GradeList.vue";
+import Newscard from "../components/Newscard.vue"
 export default {
   components:{
-    GradeList
+    GradeList,
+    Newscard
   },
 
 
