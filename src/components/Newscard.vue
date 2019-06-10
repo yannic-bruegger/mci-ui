@@ -1,7 +1,7 @@
 <template>
   <v-card
     class="mx-auto"
-    max-width="400"
+    max-width="1000"
   >
   
     <v-card-title>
@@ -17,7 +17,7 @@
       </span>
     </v-card-title>
 
-    <v-card-text style="text-align:center">
+    <v-card-text style="text-align:start">
         {{ inhalt }}
      
     </v-card-text>
