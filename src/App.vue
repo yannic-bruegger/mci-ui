@@ -1,11 +1,11 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer app clipped fixed>
+    <v-navigation-drawer app clipped fixed v-if="currentRoute != '/login'">
       <v-container>
         <modul-list></modul-list>
       </v-container>
     </v-navigation-drawer>
-    <v-navigation-drawer fixed right clipped app width="340">
+    <v-navigation-drawer fixed right clipped app width="340" v-if="currentRoute != '/login'">
       <v-container>
         <v-card>
           <v-card-title>Kalender</v-card-title>
@@ -18,7 +18,7 @@
         </v-card>
       </v-container>
     </v-navigation-drawer>
-    <v-toolbar fixed app clipped-right>
+    <v-toolbar fixed app clipped-right v-if="currentRoute != '/login'">
       <v-toolbar-title><v-breadcrumbs :items="items" divider=">"></v-breadcrumbs></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn flat color="primary">
@@ -48,19 +48,41 @@ export default {
     drawerRight: null,
     right: false,
     left: false,
-    items: [
+    
+  }),
+  props: {
+    source: String
+  },
+  created: function(){
+    console.log(this.currentRoute)
+  },
+  computed: {
+    currentRoute: function(){
+      return this.$route.fullPath
+    },
+    items: function(){
+      if(this.currentRoute == '/modul')
+      {
+      return [
         {
           text: 'Studi-Planer',
           disabled: false,
         },
         {
-          text: 'AP1',
+          text: 'Modulname',
           disabled: false,
         },
       ]
-  }),
-  props: {
-    source: String
+      }
+      else {
+      return [
+        {
+          text: 'Studi-Planer',
+          disabled: false,
+        }
+      ]
+      }
+    }
   }
 };
 </script>
