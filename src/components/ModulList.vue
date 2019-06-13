@@ -1,9 +1,11 @@
 <template>
 <div>
   <v-text-field v-model="term" solo label="Modul suchen"></v-text-field>
-  <v-card @click="{}" v-for="(mod, index) in modules" v-bind:key="index" class="mb-2">
+  <a v-on:click="openModule">
+  <v-card @click.native="openModule" v-for="(mod, index) in modules" v-bind:key="index" class="mb-2">
     <v-card-text v-if="mod.title.indexOf(term)!=-1 || mod.prof.indexOf(term)!=-1" class="text-truncate"><span :title="mod.title">{{mod.title}}</span><br><small class="mx-0">{{mod.prof}}</small></v-card-text>
   </v-card>
+  </a>
 </div>
 </template>
 
@@ -26,6 +28,11 @@ export default {
             prof: "Stefan Karsch",
           },
         ]
+    }
+  },
+  methods: {
+    openModule: function(){
+      this.$router.push('modul')
     }
   }
 };

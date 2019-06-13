@@ -21,7 +21,7 @@
     <v-toolbar fixed app clipped-right v-if="currentRoute != '/login'">
       <v-toolbar-title><v-breadcrumbs :items="items" divider=">"></v-breadcrumbs></v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn flat color="primary">
+      <v-btn flat color="primary" @click="logout">
         <v-icon class="mr-2">face</v-icon>
         <span>Max Mustermann</span>
       </v-btn>
@@ -50,11 +50,16 @@ export default {
     left: false,
     
   }),
-  props: {
-    source: String
-  },
   created: function(){
     console.log(this.currentRoute)
+  },
+  methods: {
+    logout: function(){
+      this.$router.push('login')
+    }
+  },
+  props: {
+    source: String
   },
   computed: {
     currentRoute: function(){
@@ -66,10 +71,12 @@ export default {
       return [
         {
           text: 'Studi-Planer',
+          href: '#/home',
           disabled: false,
         },
         {
           text: 'Modulname',
+          href: 'modul',
           disabled: false,
         },
       ]
