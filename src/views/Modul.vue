@@ -6,22 +6,22 @@
 
 <script>
 import GradeList from "../components/GradeList.vue";
-import Newscard from "../components/Newscard.vue"
+import Newscard from "../components/Newscard.vue";
 export default {
-  components:{
+  components: {
     GradeList,
     Newscard
   },
-
-
-data () {
-  return {
-
+  data() {
+    return {
+      moduleName: ''
+    };
+  },
+  beforeCreate: function(){
+    if( this.$route.query.name ) this.moduleName = this.$route.query.name
   }
-}
-}
+};
 </script>
 
 <style>
-
 </style>
