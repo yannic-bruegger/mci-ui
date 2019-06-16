@@ -89,7 +89,7 @@ export default {
       ],
       forumBeitraege: [
         {
-          inhalt: "Heute Abend (21.06.2019 19:34) beginnt auf dem Campus das große Grillfestival der Fachschaft. <br>Eintritt für Studierende frei!",
+          inhalt: "Heute Abend (21.06.2019 19:34) beginnt auf dem Campus das große Grillfestival der Fachschaft. Eintritt für Studierende frei!",
           autor: "Hannah Heiter",
           datum: "vor 5 Minuten",
           upvotes: parseInt(Math.random()*100+1),
@@ -103,7 +103,7 @@ export default {
           downvotes: parseInt(Math.random()*5+0)
         },
         {
-          inhalt: "Heute Abend (21.06.2019 19:34) beginnt auf dem Campus das große Grillfestival der Fachschaft. <br>Eintritt für Studierende frei!",
+          inhalt: "Heute Abend (21.06.2019 19:34) beginnt auf dem Campus das große Grillfestival der Fachschaft. Eintritt für Studierende frei!",
           autor: "Hannah Heiter",
           datum: "vor 5 Minuten",
           upvotes: parseInt(Math.random()*100+1),
