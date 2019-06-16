@@ -1,79 +1,79 @@
 <template>
-<div>
-  <v-tabs>
-    <v-tab 
-      v-for ="i in 4"
-      :key = "i"
-      ripple>
-      {{ tabs[i-1] }}
-      </v-tab>
-      <v-tab-item
-      v-for ="i in 4"
-      :key= "i"
-      >
-      <v-container v-if="i-1==2">
-      <Grade-list v-if="i-1==2"></grade-list>
-      </v-container>
-      
-      <v-container v-if="i-1==0"
-      >
-      <newscard v-if="i-1==0" v-bind:inhalt="'Veranstaltung am 24.12 fällt auf Grund von Weihnachten aus'"
-      v-bind:autor="'Heide Faeskorn Woyke'"
-      v-bind:datum="'Gestern, 16:05'"
-      v-bind:modul="'Datenbanken I'"
-      ></newscard>
-      </v-container>
-      <v-container v-if="i-1==0">
-      <newscard v-if="i-1==0" v-bind:inhalt="'Die Übung in der kommenden Woche fällt auf Grund mangelnder Nachfrage aus.' "
-      v-bind:autor="'Stefan Karsch'"
-      v-bind:datum="'03.06.2019, 14:35'"
-      v-bind:modul="'Einführung Betriebssysteme und Rechnerarchitektur'"
-      ></newscard>
-      </v-container><v-container v-if="i-1==0">
-      <newscard v-if="i-1==0" v-bind:inhalt="'Mathe macht Spaß!'"
-      v-bind:autor="'Wolfgang Konen'"
-      v-bind:datum="'vor 5 Minuten'"
-      v-bind:modul="'Mathematik I'"
-      ></newscard>
-      </v-container>
-    
+  <div>
+    <v-tabs>
+      <v-tab v-for="(tab, i) in tabs" :key="i" ripple>{{ tab }}</v-tab>
+      <v-tab-item v-for="(tab, i) in tabs" :key="i">
+        <!-- NOTEN -->
+        <v-container v-if="tab == 'Noten'">
+          <grade-list></grade-list>
+        </v-container>
 
-    
-      
+        <!-- NEWS -->
+        <v-container v-if="tab == 'News'">
+          <v-timeline dense>
+            <time-line-post
+              v-for="(post, index) in posts"
+              v-bind:key="index"
+              :inhalt="post.inhalt"
+              :autor="post.autor"
+              :datum="post.datum"
+              :modul="post.modul"
+            ></time-line-post>
+          </v-timeline>
+        </v-container>
 
+        <!-- FORUM -->
+        <v-container v-if="tab == 'Forum'">
+          
+        </v-container>
+
+        <!-- STUNDENPLAN -->
+        <schedule v-if="tab == 'Stundenplan'"></schedule>
       </v-tab-item>
-  </v-tabs>
-
-
-
-</div>
+    </v-tabs>
+  </div>
 </template>
 
 <script>
 import GradeList from "../components/GradeList.vue";
-import Newscard from "../components/Newscard.vue"
+import Newscard from "../components/Newscard.vue";
+import TimeLinePost from "../components/TimeLinePost.vue";
+import Schedule from "../components/Schedule.vue";
 export default {
-  components:{
+  components: {
     GradeList,
-    Newscard
+    Newscard,
+    TimeLinePost,
+    Schedule,
   },
 
-
-data () {
-  return {
-    tabs: [
-      "News",
-      "Forum",
-      "Noten",
-      "Stundenplan",
-      
-    ]
-
+  data() {
+    return {
+      tabs: ["News", "Forum", "Noten", "Stundenplan"],
+      posts: [
+        {
+          inhalt: "Mathe macht Spaß!",
+          autor: "Wolfgang Konen",
+          datum: "vor 5 Minuten",
+          modul: "Mathematik I"
+        },
+        {
+          inhalt: "Veranstaltung am 24.12 fällt auf Grund von Weihnachten aus",
+          autor: "Heide Faeskorn Woyke",
+          datum: "Gestern, 16:05",
+          modul: "Datenbanken I"
+        },
+        {
+          inhalt: "Die Übung in der kommenden Woche fällt auf Grund mangelnder Nachfrage aus.",
+          autor: "Stefan Karsch",
+          datum: "03.06.2019, 14:35",
+          modul: "Einführung Betriebssysteme und Rechnerarchitektur"
+        },
+      ]
+    };
   }
-}
-}
+};
 </script>
 
 <style>
-
 </style>
