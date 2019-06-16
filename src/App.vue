@@ -76,7 +76,7 @@ export default {
         },
         {
           text: 'Modulname',
-          href: 'modul',
+          to: 'modul',
           disabled: false,
         },
       ]
