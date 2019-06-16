@@ -94,8 +94,8 @@ export default {
           participate: false
         },
         {
+          autor: "Ein wissenschaftlicher Mitarbeiter",
           inhalt: this.moduleName + " macht Spaß!",
-          autor: "Ein wissenschaftliher Mitarbeiter",
           datum: "12.12.2012",
           modul: this.moduleName
         }
