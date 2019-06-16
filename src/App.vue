@@ -11,7 +11,7 @@
           <v-card-title>Kalender</v-card-title>
           <v-card-text>
             <calendar></calendar>
-            <appointment-list></appointment-list>
+            <appointment-list :items="appointments"></appointment-list>
           </v-card-text>
         </v-card>
         <v-card class="mt-2">
@@ -48,7 +48,23 @@ export default {
     drawerRight: null,
     right: false,
     left: false,
-    
+      appointments: [
+        { header: 'Anstehend' },
+        {
+          title: 'DB1: Meilenstein I',
+          subtitle: "12.12.2019 &mdash; (0815)",
+          pflicht: true
+        },
+        {
+          title: 'AP1: Praktikumsabgabe',
+          subtitle: "12.12.2019 &mdash; (0815)",
+          pflicht: true
+        },
+        {
+          title: 'MA1: Maple Schulung',
+          subtitle: "12.12.2019 &mdash; (0815)"
+        }
+      ]
   }),
   created: function(){
     console.log(this.currentRoute)

@@ -20,24 +20,11 @@
 export default {
   data(){
     return{
-      items: [
-          { header: 'Anstehend' },
-          {
-            title: 'DB1: Meilenstein I',
-            subtitle: "12.12.2019 &mdash; (0815)",
-            pflicht: true
-          },
-          {
-            title: 'AP1: Praktikumsabgabe',
-            subtitle: "12.12.2019 &mdash; (0815)",
-            pflicht: true
-          },
-          {
-            title: 'MA1: Maple Schulung',
-            subtitle: "12.12.2019 &mdash; (0815)"
-          }
-        ]
+
     }
+  },
+  props:{
+    items: Array
   }
 };
 </script>
