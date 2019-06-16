@@ -81,7 +81,7 @@ export default {
         },
         {
           inhalt: "Die Vorlesung zu " + this.modulName + " findet heute leider nicht statt!",
-          autor: "Ein wissenschaftliher Mitarbeiter",
+          autor: "Ein wissenschaftlicher Mitarbeiter",
           datum: "12.12.2012",
           modul: this.moduleName
         },
