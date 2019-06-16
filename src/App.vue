@@ -1,11 +1,11 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer app clipped fixed v-if="currentRoute != '/login'">
+    <v-navigation-drawer app clipped fixed v-if="currentRoute != '/login' && currentRoute != '/'">
       <v-container>
         <modul-list></modul-list>
       </v-container>
     </v-navigation-drawer>
-    <v-navigation-drawer fixed right clipped app width="340" v-if="currentRoute != '/login'">
+    <v-navigation-drawer fixed right clipped app width="340" v-if="currentRoute != '/login' && currentRoute != '/'">
       <v-container>
         <v-card>
           <v-card-title>Kalender</v-card-title>
@@ -18,7 +18,7 @@
         </v-card>
       </v-container>
     </v-navigation-drawer>
-    <v-toolbar fixed app clipped-right v-if="currentRoute != '/login'">
+    <v-toolbar fixed app clipped-right v-if="currentRoute != '/login' && currentRoute != '/'">
       <v-toolbar-title><v-breadcrumbs :items="items" divider=">"></v-breadcrumbs></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn flat color="primary" @click="logout">

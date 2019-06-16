@@ -8,7 +8,7 @@
               <v-card elevation="3" loading>
                 <v-progress-linear v-show="authenticationRunning" :indeterminate="authenticationRunning" color="primary"></v-progress-linear>
                 <v-card-title primary-title>
-                  <img src="@/assets/logo.png" style="width: 100px;">
+                  <img src="@/assets/logo-th.png" style="width: 100px;">
                   <h1 class="ml-5 font-weight-light">{{title}}</h1>
                 </v-card-title>
                 <v-card-text>

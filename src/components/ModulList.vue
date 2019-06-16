@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-text-field v-model="term" solo label="Modul suchen"></v-text-field>
+  <v-text-field v-model="term" solo label="Deine Module durchsuchen"></v-text-field>
   <browse-modules-modal :modules="modules"></browse-modules-modal>
   <a v-for="(mod, index) in modules" v-bind:key="index" v-on:click="openModule(mod.title, mod.prof)" >
     <v-card class="mb-2">

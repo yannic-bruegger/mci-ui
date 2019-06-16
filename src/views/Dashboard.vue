@@ -24,7 +24,22 @@
 
         <!-- FORUM -->
         <v-container v-if="tab == 'Forum'">
-          
+          <v-layout justify-end>
+            <v-textarea placeholder="Schreibe deinen Beitrag hier" solo v-model="newBeitrag"></v-textarea>
+            <v-btn @click="post()" class="ml-1 my-0">Post</v-btn>
+          </v-layout>
+          <hr class="mb-3">
+          <v-text-field solo placeholder="Beiträge durchsuchen" v-model="searchstring"></v-text-field>
+          <v-card v-for="(beitrag, i) in filteredForumBeitraege" v-bind:key="i" class="mb-3">
+            <v-card-title>Post von {{beitrag.autor}}</v-card-title>
+            <v-card-text>{{beitrag.inhalt}}</v-card-text>
+            <v-card-actions>
+              <v-layout justify-end>
+                <v-btn flat icon color="success" @click="beitrag.upvotes += 1"><v-icon>thumb_up</v-icon></v-btn>{{beitrag.upvotes}}&nbsp;&nbsp;
+                <v-btn flat icon color="error" @click="beitrag.downvotes += 1"><v-icon>thumb_down</v-icon></v-btn>{{beitrag.downvotes}}
+              </v-layout>
+            </v-card-actions>
+          </v-card>
         </v-container>
 
         <!-- STUNDENPLAN -->
@@ -49,6 +64,8 @@ export default {
 
   data() {
     return {
+      newBeitrag: "",
+      searchstring: "",
       tabs: ["News", "Forum", "Noten", "Stundenplan"],
       posts: [
         {
@@ -69,8 +86,54 @@ export default {
           datum: "03.06.2019, 14:35",
           modul: "Einführung Betriebssysteme und Rechnerarchitektur"
         },
+      ],
+      forumBeitraege: [
+        {
+          inhalt: "Heute Abend (21.06.2019 19:34) beginnt auf dem Campus das große Grillfestival der Fachschaft. <br>Eintritt für Studierende frei!",
+          autor: "Hannah Heiter",
+          datum: "vor 5 Minuten",
+          upvotes: parseInt(Math.random()*100+1),
+          downvotes: parseInt(Math.random()*5+0),
+        },
+        {
+          inhalt: "Um den Studiengang wechseln zu können, gibt es einige Grundvoraussetzungen. Folgend sind diese Voraussetzunngen NICHT geschildert:",
+          autor: "Fridolin Fröhlich",
+          datum: "vor 5 Minuten",
+          upvotes: parseInt(Math.random()*100+1),
+          downvotes: parseInt(Math.random()*5+0)
+        },
+        {
+          inhalt: "Heute Abend (21.06.2019 19:34) beginnt auf dem Campus das große Grillfestival der Fachschaft. <br>Eintritt für Studierende frei!",
+          autor: "Hannah Heiter",
+          datum: "vor 5 Minuten",
+          upvotes: parseInt(Math.random()*100+1),
+          downvotes: parseInt(Math.random()*5+0)
+        },
       ]
-    };
+    }
+  },
+  computed: {
+    filteredForumBeitraege: function(){
+      var context = this;
+      if( this.searchstring == "" ) return this.forumBeitraege
+
+      return this.forumBeitraege.filter(function(beitrag){
+        return beitrag.inhalt.includes(context.searchstring) || beitrag.autor.includes(context.searchstring)
+      })
+    }
+  },
+  methods: {
+    post:  function(){
+      this.forumBeitraege.unshift({
+        inhalt: this.newBeitrag,
+        autor: "Max Mustermann",
+        datum: "Gerade eben",
+        upvotes: 0,
+        downvotes: 0
+      })
+      this.newBeitrag = ""
+      
+    }
   }
 };
 </script>
