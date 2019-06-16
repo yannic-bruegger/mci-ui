@@ -66,7 +66,7 @@ export default {
       return this.$route.fullPath
     },
     items: function(){
-      if(this.currentRoute == '/modul')
+      if(this.currentRoute.startsWith('/modul'))
       {
       return [
         {
@@ -75,7 +75,7 @@ export default {
           disabled: false,
         },
         {
-          text: 'Modulname',
+          text: this.$route.query.title,
           to: 'modul',
           disabled: false,
         },

@@ -1,6 +1,21 @@
 <template>
   <v-container>
-    <h1>Modulname</h1>
+    <h1>{{moduleName}}</h1>
+    <h4>{{prof}}</h4>
+    <h2>Informationen</h2>
+    <p></p>
+
+    <h2>News zum Modul</h2>
+    <p></p>
+
+    <h2>Praktikum</h2>
+    <p></p>
+
+    <h2>Prüfung</h2>
+    <p></p>
+
+    <h2>Dateien</h2>
+    <p></p>
   </v-container>
 </template>
 
@@ -14,11 +29,19 @@ export default {
   },
   data() {
     return {
-      moduleName: ''
+      
     };
   },
-  beforeCreate: function(){
-    if( this.$route.query.name ) this.moduleName = this.$route.query.name
+  computed:{
+    moduleName: function(){
+      return this.$route.query.title
+    },
+    prof: function(){
+      return this.$route.query.prof
+    }
+  },
+  beforeUpdated: function(){
+    
   }
 };
 </script>
